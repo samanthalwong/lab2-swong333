@@ -30,6 +30,17 @@ def physconst(input):
   return output
 
 
-def planck():
-  """Function docstring goes here.""" 
+def planck(np.temperatures, np.frequencies):
+  """Returns the physical constants that compute the Planck radiation function""" 
+  h=physconst("planck's constant")
+  c=physconst("speed of light")
+  k=physconst("boltzmann's constant")
+
+  np.boltzfn = (2*h*(np.frequencies**3)*(c**2))*((exp(h*np.frequencies)/k*np.temperatures)-1)**(-1))
+
+  print np.boltzfn
+
   return()
+
+
+np.temps = [5000,10000,15000]
