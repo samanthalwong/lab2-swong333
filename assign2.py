@@ -38,14 +38,13 @@ def planck(temperatures, frequencies):
 
   boltzfn = (2*h*(np.frequencies**3)*(c**2))*((exp(h*np.frequencies)/k*np.temperatures)-1)**(-1)
 
-  print(boltzfn)
 
   return()
 
 
-temps = np.array([5000,10000,15000])
-lambdas = np.arrange(10, 2000)
+temps = np.array([5000, 10000, 15000])
+lambdas = np.arange(10, 2001)
+freqs = np.divide(physconst("speed of light"), (lambdas/10**9))
 
-print(temps)
-print(lambdas)
+planck(temps, freqs)
 
