@@ -11,7 +11,7 @@ def physconst(const):
     if (const == "speed of light"):
         output = 2.99792458 * 10 ** (8)
     elif (const == "planck's constant"):
-        output = 6.62606896 * 10 ** (-4)
+        output = 6.62606896 * 10 ** (-34)
     elif (const == "boltzmann's constant"):
         output = 1.3806504 * 10 ** (-23)
     elif (const == "electron mass"):
@@ -38,9 +38,17 @@ def planck(temperatures, frequencies):
     k = physconst("boltzmann's constant")
     temperatures = temperatures[:, np.newaxis]
 
-    boltz_matrix = ((2 * h * (frequencies ** 3)) / (c ** 2)) * (
-                (np.exp((h * frequencies) / (k * temperatures)) - 1) ** (-1))
+    x = (np.multiply((2*h),(np.power(frequencies, 3))))/(c**2)
+    #print(x)
+    y = np.divide(np.multiply(h, frequencies), np.multiply(k, temperatures))
+    print(y)
+    z = np.exp(y) - 1
+    #print(z)
+    zz = np.power(z, -1)
 
+    boltz_matrix = x*zz
+
+    #boltz_matrix = ((2 * h * (np.power(frequencies, 3))) / (c ** 2)) * ((np.exp((np.multiply(h, frequencies)) / (np.multiply(k, temperatures))) - 1) ** (-1))
     return boltz_matrix
 
 
