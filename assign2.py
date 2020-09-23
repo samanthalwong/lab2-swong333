@@ -40,7 +40,7 @@ def planck(temperatures, frequencies):
 
     x=(2*h*np.power(frequencies,3))/c**2
     #x = (np.multiply((2*h), (np.power(frequencies, 3))))/(c**2)
-    #print(x)
+    print(x)
     #print("------")
     #y = np.divide(np.multiply(h, frequencies), np.multiply(k, temperatures))
     y=h*frequencies/(k*temperatures)
@@ -48,7 +48,6 @@ def planck(temperatures, frequencies):
     z = np.exp(y) - 1
     #print(z)
     zz = np.power(z, -1)
-
     boltz_matrix = x*zz
 
     #boltz_matrix = ((2 * h * (np.power(frequencies, 3))) / (c ** 2)) * ((np.exp((np.multiply(h, frequencies)) / (np.multiply(k, temperatures))) - 1) ** (-1))
