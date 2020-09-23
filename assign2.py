@@ -39,18 +39,14 @@ def planck(temperatures, frequencies):
     temperatures = temperatures[:, np.newaxis]
 
     x=(2*h*np.power(frequencies,3))/c**2
-    #x = (np.multiply((2*h), (np.power(frequencies, 3))))/(c**2)
-    print(x)
-    #print("------")
-    #y = np.divide(np.multiply(h, frequencies), np.multiply(k, temperatures))
+
     y=h*frequencies/(k*temperatures)
-    print(y)
+
     z = np.exp(y) - 1
-    #print(z)
+
     zz = np.power(z, -1)
     boltz_matrix = x*zz
 
-    #boltz_matrix = ((2 * h * (np.power(frequencies, 3))) / (c ** 2)) * ((np.exp((np.multiply(h, frequencies)) / (np.multiply(k, temperatures))) - 1) ** (-1))
     return boltz_matrix
 
 
@@ -58,7 +54,6 @@ temps = np.array([5000, 10000, 15000])
 lambdas = np.arange(10, 2001)
 freqs = np.divide(physconst("speed of light"), (lambdas / 10 ** 9))
 
-#x1 = planck(temps, freqs)[:, 0]
 y1 = planck(temps, freqs)[0, :]
 y2 = planck(temps, freqs)[1, :]
 y3 = planck(temps, freqs)[2, :]
@@ -69,4 +64,16 @@ plt.xlabel("Frequency of Light (Hz)")
 plt.ylabel("Intensity")
 plt.title("Radiation Field for T = 5000K, 10 000K, and 15 0000K for Light in a Vacuum")
 
-plt.show()
+#plt.show()
+
+#check that function is correct with numpy.trapz
+int1 = np.trapz(y1)
+int2 = np.trapz(y2)
+int3 = np.trapz(y3)
+
+sb_law1 = physconst("stefan-boltzmann constant")*(5000**4)/np.pi
+sb_law2 = physconst("stefan-boltzmann constant")*(10000**4)/np.pi
+sb_law3 = physconst("stefan-boltzmann constant")*(15000**4)/np.pi
+
+print(sb_law1,sb_law2,sb_law3)
+print(int1, int2, int3)
