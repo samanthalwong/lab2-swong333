@@ -58,4 +58,15 @@ temps = np.array([5000, 10000, 15000])
 lambdas = np.arange(10, 2001)
 freqs = np.divide(physconst("speed of light"), (lambdas / 10 ** 9))
 
-print(planck(temps, freqs))
+#x1 = planck(temps, freqs)[:, 0]
+y1 = planck(temps, freqs)[0, :]
+y2 = planck(temps, freqs)[1, :]
+y3 = planck(temps, freqs)[2, :]
+
+plt.plot(y1, 'b', y2,'r', y3, 'k')
+plt.legend(['T = 5000 K','T = 10 000 K','T = 15 000 K'])
+plt.xlabel("Frequency of Light (Hz)")
+plt.ylabel("Intensity")
+plt.title("Radiation Field for T = 5000K, 10 000K, and 15 0000K for Light in a Vacuum")
+
+plt.show()
