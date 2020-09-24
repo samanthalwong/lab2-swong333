@@ -2,7 +2,7 @@ import string
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+##add input and output + units to docstrings
 def physconst(const):
     """Takes input as the name of a physical constant and outputs its numerical value"""
 
@@ -67,13 +67,15 @@ plt.title("Radiation Field for T = 5000K, 10 000K, and 15 0000K for Light in a V
 #plt.show()
 
 #check that function is correct with numpy.trapz
-int1 = np.trapz(y1)
-int2 = np.trapz(y2)
-int3 = np.trapz(y3)
+int1 = np.trapz(freqs,y1)
+int2 = np.trapz(freqs,y2)
+int3 = np.trapz(freqs,y3)
 
 sb_law1 = physconst("stefan-boltzmann constant")*(5000**4)/np.pi
 sb_law2 = physconst("stefan-boltzmann constant")*(10000**4)/np.pi
 sb_law3 = physconst("stefan-boltzmann constant")*(15000**4)/np.pi
+
+
 
 print(sb_law1,sb_law2,sb_law3)
 print(int1, int2, int3)
